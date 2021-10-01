@@ -8,7 +8,7 @@ case class Game(teams: List[Score])
 case class Team(name: String)
 case class TeamPoints(teamName: String, points: Int)
 class MatchResultsMarshall(fileUrl:String) {
-  val data = Source.fromFile("./src/main/scala/matchesResults.txt").getLines().toList
+  val data = Source.fromFile(fileUrl).getLines().toList
 def getTeamNames()={
   data.flatMap(game => game.split(",")).map(_.replaceAll("([a-zA-Z\\s]+)\\s\\d+", "$1"))
     .distinct
