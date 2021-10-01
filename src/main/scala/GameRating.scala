@@ -4,7 +4,7 @@ object GameRating extends App {
   val data = new MatchResultsMarshall("./src/main/scala/matchesResults.txt")
 
 
-  val pointsEarnedPerTeam =data.getPointsEarnedPerMatch()
+  val pointsEarnedPerTeam =data.getPointsEarnedPerMatch().sortBy(_.teamName).reverse.sortBy(_.points).reverse
 
 
 

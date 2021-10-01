@@ -26,10 +26,10 @@ def getGameMatches()={
     }.groupBy(_.teamName).map(teamScore => TeamPoints(teamScore._1, teamScore._2.map(_.points).sum)).toList.sortBy(_.points).reverse
   }
 
-  def PointsEarnedPerTeam()={
+  def PointsEarnedPerTeam():List[TeamPoints]={
     getTeamNames().flatMap { team =>
       getGameMatches().map(game => TeamPoints(team, getPointsEarnedInGameMatch(team, game)))
-    }.groupBy(_.teamName).map(teamScore => TeamPoints(teamScore._1, teamScore._2.map(_.points).sum)).toList.sortBy(_.points).reverse
+    }.groupBy(_.teamName).map(teamScore => TeamPoints(teamScore._1, teamScore._2.map(_.points).sum)).toList
   }
 
   def getPointsEarnedInGameMatch(teamName: String, game: Game): Int = {
